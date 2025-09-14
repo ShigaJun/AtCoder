@@ -1,15 +1,18 @@
 N, R = map(int, input().split())
 L = list(map(int, input().split()))
-x = 0
 
-i = 0
-while R > i and L[i] == 1:
-    x += 1
-    i += 1
-i = 0
-while R < N - 1 - i and L[N - 1 - i] == 1:
-    x += 1
-    i += 1
+if L.count(0) == 0:
+    print(0)
+    exit()
 
-ans = (sum(L) - x) + (len(L) - x)
+for i, v in enumerate(L):
+    if v == 0:
+        l = min(i, R)
+        break
+for j, v in enumerate(reversed(L)):
+    if v == 0:
+        r = max(N - 1 - j, R - 1)
+        break
+
+ans = sum(L[l:r + 1]) + (r - l + 1)
 print(ans)
