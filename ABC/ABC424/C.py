@@ -1,14 +1,19 @@
-N = int(input())
-l = [[0] * N] * N
-skill = []
-ans = []
-for i in range(N):
-    A, B = map(int, input().split())
-    if A == B == 0:
-        skill.append(i + 1)
-        continue
-    l[A][i] = 1
-    l[B][i] = 1
+import sys
+sys.setrecursionlimit(10**6)
 
-for s in skill:
-    
+def dfs(v):
+    skill[v] = 1
+    for e in l[v]:
+        if skill[e] == 0:
+            dfs(e)
+
+N = int(input())
+l = [[] for _ in range(N + 1)]
+skill = [1] + [0] * N
+for i in range(1, N + 1):
+    A, B = map(int, input().split())
+    l[A].append(i)
+    l[B].append(i)
+
+dfs(0)
+print(sum(skill) - 1)
