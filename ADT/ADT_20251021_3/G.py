@@ -7,8 +7,8 @@ for _ in range(T):
     A = list(map(int, input().split()))
 
     c = collections.Counter(A)
-    if len(list(c)) == 2:
-        if list(c)[0] / list(c)[1] == -1 and abs(c[list(c)[0]] - c[list(c)[1]]) <= 1:
+    elements = list(c)
+    if len(elements) == 2 and elements[0] / elements[1] == -1 and abs(c[elements[0]] - c[elements[1]]) <= 1:
             print("Yes")
             continue
     
