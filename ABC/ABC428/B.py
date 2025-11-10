@@ -3,14 +3,8 @@ import collections
 N, K = map(int, input().split())
 S = input()
 
-l = []
-
-for i in range(N - K + 1):
-    l.append(S[i:i + K])
-l = sorted(l)
-c = collections.Counter(l)
+c = collections.Counter(S[i:i + K] for i in range(N - K + 1))
 x = max(c.values())
 print(x)
-for t in c.keys():
-    if c[t] == x:
-        print(t, end=' ')
+ans = sorted(t for t in c.keys() if c[t] == x)
+print(*ans)

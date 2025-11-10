@@ -1,5 +1,4 @@
 S, A, B, X = map(int, input().split())
 
-tmp = X // (A + B)
-ans = (tmp * A + min(A, X - tmp * (A + B))) * S
+ans = (X // (A + B) * A + min(A, X % (A + B))) * S
 print(ans)
