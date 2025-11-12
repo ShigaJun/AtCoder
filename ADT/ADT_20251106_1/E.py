@@ -1,17 +1,24 @@
 S = list(input())
 T = list(input())
 
-U = []
 X = []
+Y = []
+Z = []
 
 for i in range(len(S)):
-    if S[i] != T[i]:
-        U.append([i, T[i]])
+    if ord(S[i]) > ord(T[i]):
+        Y.append([i, T[i]])
+    elif ord(S[i]) < ord(T[i]):
+        Z.append([i, T[i]])
 
-U = sorted(U, key=lambda x: x[1])
+Y = sorted(Y)
+Z = sorted(Z, reverse=True)
 
-for j in range(len(U)):
-    S[U[j][0]] = U[j][1]
+for j in range(len(Y)):
+    S[Y[j][0]] = Y[j][1]
+    X.append(''.join(S))
+for k in range(len(Z)):
+    S[Z[k][0]] = Z[k][1]
     X.append(''.join(S))
     
 print(len(X))
